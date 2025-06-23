@@ -1,8 +1,16 @@
-from netaddr import IPNetwork
+from netaddr import IPNetwork, AddrFormatError 
+
+def get_valid_network():
+    while True:
+        network_input = input("Enter network address (e.g., 192.168.1.0/24): ").strip().replace(" ", "")
+        try:
+            return IPNetwork(network_input)
+        except AddrFormatError:
+            print("Invalid network format. Example: 192.168.1.0/24")
 
 def calculate_vlsm(network, hosts_required):
     hosts_required.sort(reverse=True)
-    current_network = IPNetwork(network)
+    current_network = network
     subnets = []
 
     for hosts_needed in hosts_required:
@@ -44,7 +52,7 @@ def print_vlsm_table(subnets):
         ))
 
 if __name__ == "__main__":
-    network_input = input("Enter network address (e.g., 192.168.1.0/24): ").strip()
+    network = get_valid_network()
 
     try:
         num_subnets = int(input("Enter number of required subnets: ").strip())
@@ -65,7 +73,7 @@ if __name__ == "__main__":
         if not hosts_list:
             raise ValueError("No valid host numbers provided.")
 
-        subnets = calculate_vlsm(network_input, hosts_list)
+        subnets = calculate_vlsm(network, hosts_list)
         print_vlsm_table(subnets)
 
     except Exception as e:
