@@ -3,12 +3,14 @@ A simple command-line tool to calculate subnet allocations using Variable Length
 Built for educational and practical use in subnet planning.
 
 ![Python](https://img.shields.io/badge/Python-3.6%2B-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Requirements](https://img.shields.io/badge/requirements.txt-up%20to%20date-brightgreen)
 
 ## ✨ Features
-- Calculate optimal subnet divisions from required hosts
-- Detailed output: Network Address, Broadcast, Mask, Wildcard, Usable Range
-- Interactive CLI input
-- Simple and easy to use
+- 📏 Calculates optimal subnet divisions based on required host counts
+- 📊 Detailed output including Network Address, Broadcast Address, Subnet Mask, Wildcard Mask, and Usable IP Range
+- 🧑‍💻 Interactive CLI input for network and host requirements
+- ⚡ Lightweight, beginner-friendly, and easy to use
 
 ## 📋 Requirements
 1. 🐍 Python 3.6 or higher
@@ -27,7 +29,7 @@ pip install netaddr
 ```
 
 ## How to Use
-1. Make sure you have Python installed (Python 3.6 or higher). Download it from [python.org](https://www.python.org/downloads/).
+1. 🐍 Make sure you have Python installed (Python 3.6 or higher). Download it from [python.org](https://www.python.org/downloads/).
 2. 📥 Clone the repository
 ```bash
 git clone https://github.com/yourusername/vlsm-calculator.git
@@ -71,4 +73,4 @@ Contributions are welcome. Feel free to open issues or submit pull requests for 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Sultan%20Badra-blue?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/sultan-badra)
 
 ## 📜 License
-This project is open source and free to use.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
