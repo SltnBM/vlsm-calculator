@@ -10,6 +10,7 @@ Built for educational and practical use in subnet planning.
 - 📏 Calculates optimal subnet divisions based on required host counts
 - 📊 Detailed output including Network Address, Broadcast Address, Subnet Mask, Wildcard Mask, and Usable IP Range
 - 🧑‍💻 Interactive CLI input for network and host requirements
+- ♻️ Continuous input mode with validation and graceful exit
 - ⚡ Lightweight, beginner-friendly, and easy to use
 
 ## 📋 Requirements
