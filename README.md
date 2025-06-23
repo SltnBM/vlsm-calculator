@@ -1,16 +1,18 @@
-# VLSM Calculator
+# 📐 VLSM Calculator
 A simple command-line tool to calculate subnet allocations using Variable Length Subnet Masking (VLSM).  
 Built for educational and practical use in subnet planning.
 
-## Features
+![Python](https://img.shields.io/badge/Python-3.6%2B-blue.svg)
+
+## ✨ Features
 - Calculate optimal subnet divisions from required hosts
 - Detailed output: Network Address, Broadcast, Mask, Wildcard, Usable Range
 - Interactive CLI input
 - Simple and easy to use
 
-## Requirements
-1. Python 3.6 or higher
-2. netaddr
+## 📋 Requirements
+1. 🐍 Python 3.6 or higher
+2. 📦 netaddr
 
 Install dependencies:
 
@@ -26,20 +28,20 @@ pip install netaddr
 
 ## How to Use
 1. Make sure you have Python installed (Python 3.6 or higher). Download it from [python.org](https://www.python.org/downloads/).
-2. Clone the repository
+2. 📥 Clone the repository
 ```bash
 git clone https://github.com/yourusername/vlsm-calculator.git
 ```
-3. Navigate to the project directory
+3. 📂 Navigate to the project directory
 ```bash
 cd vlsm-calculator
 ```
-4. Run the script
+4. ▶️ Run the script
 ```bash
 python vlsm_calculator.py
 ```
 
-## Usage
+## 💻 Usage
 Interactive mode
 ```bash
 python vlsm_calculator.py
