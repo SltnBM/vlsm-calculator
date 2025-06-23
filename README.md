@@ -50,7 +50,10 @@ python vlsm_calculator.py
 Example
 ```plaintext
 Enter network address (e.g., 192.168.1.0/24): 192.168.1.0/24
-Enter required hosts per subnet (comma-separated, e.g., 50,30,10): 50,30,10
+Enter number of required subnets: 3
+Enter required hosts for subnet 1: 50
+Enter required hosts for subnet 2: 30
+Enter required hosts for subnet 3: 10
 ```
 
 Example output
