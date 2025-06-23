@@ -45,10 +45,23 @@ def print_vlsm_table(subnets):
 
 if __name__ == "__main__":
     network_input = input("Enter network address (e.g., 192.168.1.0/24): ").strip()
-    hosts_input = input("Enter required hosts per subnet (comma-separated, e.g., 50,30,10): ").strip()
 
     try:
-        hosts_list = [int(h.strip()) for h in hosts_input.split(",") if h.strip().isdigit()]
+        num_subnets = int(input("Enter number of required subnets: ").strip())
+        hosts_list = []
+
+        for i in range(num_subnets):
+            while True:
+                try:
+                    host = int(input(f"Enter required hosts for subnet {i+1}: ").strip())
+                    if host > 0:
+                        hosts_list.append(host)
+                        break
+                    else:
+                        print("Number must be greater than 0.")
+                except ValueError:
+                    print("Please enter a valid number.")
+
         if not hosts_list:
             raise ValueError("No valid host numbers provided.")
 
