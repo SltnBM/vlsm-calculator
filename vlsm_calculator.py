@@ -5,20 +5,43 @@ def calculate_vlsm(network, hosts_required):
     current_network = IPNetwork(network)
     subnets = []
 
-    for hosts in hosts_required:
-        prefix = 32 - (hosts + 2 - 1).bit_length()
+    for hosts_needed in hosts_required:
+        prefix = 32 - (hosts_needed + 2 - 1).bit_length()
         subnet = IPNetwork(f"{current_network.network}/{prefix}")
-        subnets.append(subnet)
+        hosts_available = subnet.size - 2
+        unused_hosts = hosts_available - hosts_needed
+        usable_range = f"{subnet.network + 1} - {subnet.broadcast - 1}"
+        wildcard = subnet.hostmask
+
+        subnets.append({
+            "Name": f"Subnet {len(subnets)+1}",
+            "Hosts Needed": hosts_needed,
+            "Hosts Available": hosts_available,
+            "Unused Hosts": unused_hosts,
+            "Network Address": str(subnet.network),
+            "Broadcast": str(subnet.broadcast),
+            "Usable Range": usable_range,
+            "Slash": f"/{prefix}",
+            "Mask": str(subnet.netmask),
+            "Wildcard": str(wildcard)
+        })
+
         next_network = subnet.broadcast + 1
         current_network = IPNetwork(f"{next_network}/{prefix}")
 
     return subnets
 
 def print_vlsm_table(subnets):
-    print(f"\n{'Subnet':<10}{'Network':<20}{'Broadcast':<20}{'Usable Hosts':<15}{'Subnet Mask'}")
-    for i, subnet in enumerate(subnets, 1):
-        usable_hosts = subnet.size - 2
-        print(f"{f'Subnet {i}':<10}{str(subnet.network):<20}{str(subnet.broadcast):<20}{usable_hosts:<15}{subnet.netmask}")
+    print("\n{:<10}{:<15}{:<17}{:<15}{:<18}{:<18}{:<33}{:<7}{:<18}{}".format(
+        "Name", "Hosts Needed", "Hosts Available", "Unused Hosts", "Network Address",
+        "Broadcast Address", "Usable Range", "Slash", "Mask", "Wildcard"
+    ))
+    for s in subnets:
+        print("{:<10}{:<15}{:<17}{:<15}{:<18}{:<18}{:<33}{:<7}{:<18}{}".format(
+            s["Name"], s["Hosts Needed"], s["Hosts Available"], s["Unused Hosts"],
+            s["Network Address"], s["Broadcast"], s["Usable Range"], s["Slash"],
+            s["Mask"], s["Wildcard"]
+        ))
 
 if __name__ == "__main__":
     network_input = input("Enter network address (e.g., 192.168.1.0/24): ").strip()
