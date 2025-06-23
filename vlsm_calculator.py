@@ -1,12 +1,4 @@
-from netaddr import IPNetwork, AddrFormatError 
-
-def get_valid_network():
-    while True:
-        network_input = input("Enter network address (e.g., 192.168.1.0/24): ").strip().replace(" ", "")
-        try:
-            return IPNetwork(network_input)
-        except AddrFormatError:
-            print("Invalid network format. Example: 192.168.1.0/24")
+from netaddr import IPNetwork
 
 def calculate_vlsm(network, hosts_required):
     hosts_required.sort(reverse=True)
@@ -52,29 +44,45 @@ def print_vlsm_table(subnets):
         ))
 
 if __name__ == "__main__":
-    network = get_valid_network()
-
-    try:
-        num_subnets = int(input("Enter number of required subnets: ").strip())
-        hosts_list = []
-
-        for i in range(num_subnets):
+    while True:
+        try:
             while True:
                 try:
-                    host = int(input(f"Enter required hosts for subnet {i+1}: ").strip())
-                    if host > 0:
-                        hosts_list.append(host)
+                    network_input = input("\nEnter network address (e.g., 192.168.1.0/24 or type 'exit'): ").strip().replace(" ", "")
+                    if network_input.lower() == "exit":
+                        print("Exiting. Goodbye!")
+                        exit()
+                    network = IPNetwork(network_input)
+                    break
+                except Exception:
+                    print("Invalid network format. Please try again.")
+
+            while True:
+                try:
+                    num_subnets = int(input("Enter number of required subnets: ").strip())
+                    if num_subnets > 0:
                         break
                     else:
                         print("Number must be greater than 0.")
                 except ValueError:
                     print("Please enter a valid number.")
 
-        if not hosts_list:
-            raise ValueError("No valid host numbers provided.")
+            hosts_list = []
+            for i in range(num_subnets):
+                while True:
+                    try:
+                        host = int(input(f"Enter required hosts for subnet {i+1}: ").strip())
+                        if host > 0:
+                            hosts_list.append(host)
+                            break
+                        else:
+                            print("Number must be greater than 0.")
+                    except ValueError:
+                        print("Please enter a valid number.")
 
-        subnets = calculate_vlsm(network, hosts_list)
-        print_vlsm_table(subnets)
+            subnets = calculate_vlsm(network, hosts_list)
+            print_vlsm_table(subnets)
 
-    except Exception as e:
-        print(f"Error: {e}")
+        except KeyboardInterrupt:
+            print("\nExiting. Goodbye!")
+            break
