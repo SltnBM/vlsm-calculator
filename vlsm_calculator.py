@@ -64,6 +64,8 @@ def print_vlsm_table(subnets):
         )
 
     print(table)
+    print("\n[bold red]Tip:[/] Having trouble with the table layout? Try resizing your terminal and run it again.\n")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="VLSM Subnet Calculator")
