@@ -1,4 +1,4 @@
-# 📐 VLSM Calculator
+# 📐 VLSM Calculator - Subnet Planner CLI
 A simple command-line tool to calculate subnet allocations using Variable Length Subnet Masking (VLSM).  
 Built for educational and practical use in subnet planning.
 
@@ -10,13 +10,13 @@ Built for educational and practical use in subnet planning.
 - 📏 Calculates optimal subnet divisions based on required host counts
 - 📊 Detailed output including Network Address, Broadcast Address, Subnet Mask, Wildcard Mask, and Usable IP Range
 - 🧑‍💻 Interactive CLI input for network and host requirements
-- ⚙️ Supports command-line arguments
+- 📌 Supports command-line arguments
 - ♻️ Continuous input mode with validation and graceful exit
 - ⚡ Lightweight, beginner-friendly, and easy to use
 
 ## 📋 Requirements
 1. 🐍 Python 3.6 or higher
-2. 📦 netaddr, rich
+2. 📦 [`netaddr`](https://pypi.org/project/netaddr/), [`rich`](https://pypi.org/project/rich/)
 
 Install dependencies:
 
@@ -36,6 +36,8 @@ pip install netaddr rich
 ```bash
 git clone https://github.com/SltnBM/vlsm-calculator.git
 ```
+Alternatively, you can Download ZIP if preferred.
+
 3. 📂 Navigate to the project directory
 ```bash
 cd vlsm-calculator
@@ -60,7 +62,7 @@ If no arguments are provided, the script will ask for input:
 ```bash
 python vlsm_calculator.py
 ```
-Example (Interactive)
+Example (Interactive mode)
 ```plaintext
 Enter network address (e.g., 192.168.1.0/24): 192.168.1.0/24
 Enter number of required subnets: 3
@@ -68,7 +70,6 @@ Enter required hosts for subnet 1: 50
 Enter required hosts for subnet 2: 30
 Enter required hosts for subnet 3: 10
 ```
-
 
 ### Example output
 ```plaintext
