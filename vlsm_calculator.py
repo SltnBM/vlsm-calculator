@@ -34,18 +34,18 @@ def calculate_vlsm(network, hosts_required):
     return subnets
 
 def print_vlsm_table(subnets):
-    table = Table(title="[bold green]VLSM Subnet Calculation[/]")
+    table = Table(title="[bold green]VLSM Subnet Calculation[/]", expand=True)
 
-    table.add_column("Name", style="bold yellow")
-    table.add_column("Hosts Needed", justify="right")
-    table.add_column("Hosts Available", justify="right")
-    table.add_column("Unused Hosts", justify="right")
-    table.add_column("Network Address", style="green")
-    table.add_column("Broadcast", style="green")
-    table.add_column("Usable Range", style="green")
-    table.add_column("Slash", style="blue")
-    table.add_column("Mask", style="magenta")
-    table.add_column("Wildcard", style="red")
+    table.add_column("Name", style="bold yellow", no_wrap=True)
+    table.add_column("Hosts Needed", justify="right", no_wrap=True)
+    table.add_column("Hosts Available", justify="right", no_wrap=True)
+    table.add_column("Unused Hosts", justify="right", no_wrap=True)
+    table.add_column("Network Address", style="green", no_wrap=True)
+    table.add_column("Broadcast", style="green", no_wrap=True)
+    table.add_column("Usable Range", style="green", overflow="fold", min_width=25)
+    table.add_column("Slash", style="blue", no_wrap=True)
+    table.add_column("Mask", style="magenta", no_wrap=True)
+    table.add_column("Wildcard", style="red", no_wrap=True)
 
     for s in subnets:
         table.add_row(
