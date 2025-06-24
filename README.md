@@ -10,12 +10,13 @@ Built for educational and practical use in subnet planning.
 - 📏 Calculates optimal subnet divisions based on required host counts
 - 📊 Detailed output including Network Address, Broadcast Address, Subnet Mask, Wildcard Mask, and Usable IP Range
 - 🧑‍💻 Interactive CLI input for network and host requirements
+- ⚙️ Supports command-line arguments
 - ♻️ Continuous input mode with validation and graceful exit
 - ⚡ Lightweight, beginner-friendly, and easy to use
 
 ## 📋 Requirements
 1. 🐍 Python 3.6 or higher
-2. 📦 netaddr
+2. 📦 netaddr, rich
 
 Install dependencies:
 
@@ -26,7 +27,7 @@ pip install -r requirements.txt
 or manually:
 
 ```bash
-pip install netaddr
+pip install netaddr rich
 ```
 
 ## How to Use
@@ -45,12 +46,21 @@ python vlsm_calculator.py
 ```
 
 ## 💻 Usage
-Interactive mode
+### Option 1: With CLI arguments
+```bash
+python vlsm_calculator.py -n <network> -H <hosts> [<hosts> ...]
+```
+Example:
+```bash
+python vlsm_calculator.py -n 192.168.1.0/24 -H 50 30 10
+```
+
+### Option 2: Interactive mode
+If no arguments are provided, the script will ask for input:
 ```bash
 python vlsm_calculator.py
 ```
-
-Example
+Example (Interactive)
 ```plaintext
 Enter network address (e.g., 192.168.1.0/24): 192.168.1.0/24
 Enter number of required subnets: 3
@@ -59,7 +69,8 @@ Enter required hosts for subnet 2: 30
 Enter required hosts for subnet 3: 10
 ```
 
-Example output
+
+### Example output
 ```plaintext
 Name      Hosts Needed   Hosts Available  Unused Hosts   Network Address   Broadcast Address Usable Range                     Slash  Mask              Wildcard
 Subnet 1  50             62               12             192.168.1.0       192.168.1.63      192.168.1.1 - 192.168.1.62       /26    255.255.255.192   0.0.0.63
