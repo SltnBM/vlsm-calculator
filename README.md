@@ -34,7 +34,7 @@ pip install netaddr rich
 1. 🐍 Make sure you have Python installed (Python 3.6 or higher). Download it from [python.org](https://www.python.org/downloads/).
 2. 📥 Clone the repository
 ```bash
-git clone https://github.com/yourusername/vlsm-calculator.git
+git clone https://github.com/SltnBM/vlsm-calculator.git
 ```
 3. 📂 Navigate to the project directory
 ```bash
