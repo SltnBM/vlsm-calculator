@@ -1,6 +1,8 @@
 from netaddr import IPNetwork
 from rich import print
 from rich.table import Table
+import argparse
+import sys
 
 def calculate_vlsm(network, hosts_required):
     hosts_required.sort(reverse=True)
@@ -64,7 +66,22 @@ def print_vlsm_table(subnets):
     print(table)
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="VLSM Subnet Calculator")
+    parser.add_argument("-n", "--network", type=str, help="Network address in CIDR (e.g., 192.168.1.0/24)")
+    parser.add_argument("-H", "--hosts", type=int, nargs="+", metavar="N", help="List of required hosts per subnet (e.g., -H 50 30 10)")
+    args = parser.parse_args()
+
     print("\n[bold cyan]=== VLSM SUBNET CALCULATOR (type 'exit' to quit) ===[/]")
+
+    if args.network and args.hosts:
+        try:
+            network = IPNetwork(args.network)
+            subnets = calculate_vlsm(network, args.hosts)
+            print_vlsm_table(subnets)
+            sys.exit(0)
+        except Exception as e:
+            print(f"[bold red]Invalid network:[/] {e}")
+            sys.exit(1)
 
     while True:
         try:
@@ -73,7 +90,7 @@ if __name__ == "__main__":
                     network_input = input("\nEnter network address (e.g., 192.168.1.0/24): ").strip().replace(" ", "")
                     if network_input.lower() == "exit":
                         print("[bold red]Exiting. Goodbye![/]")
-                        exit()
+                        sys.exit(0)
                     network = IPNetwork(network_input)
                     break
                 except Exception:
