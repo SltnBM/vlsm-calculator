@@ -1,4 +1,6 @@
 from netaddr import IPNetwork
+from rich import print
+from rich.table import Table
 
 def calculate_vlsm(network, hosts_required):
     hosts_required.sort(reverse=True)
@@ -32,30 +34,50 @@ def calculate_vlsm(network, hosts_required):
     return subnets
 
 def print_vlsm_table(subnets):
-    print("\n{:<10}{:<15}{:<17}{:<15}{:<18}{:<18}{:<33}{:<7}{:<18}{}".format(
-        "Name", "Hosts Needed", "Hosts Available", "Unused Hosts", "Network Address",
-        "Broadcast Address", "Usable Range", "Slash", "Mask", "Wildcard"
-    ))
+    table = Table(title="[bold green]VLSM Subnet Calculation[/]")
+
+    table.add_column("Name", style="bold yellow")
+    table.add_column("Hosts Needed", justify="right")
+    table.add_column("Hosts Available", justify="right")
+    table.add_column("Unused Hosts", justify="right")
+    table.add_column("Network Address", style="green")
+    table.add_column("Broadcast", style="green")
+    table.add_column("Usable Range", style="green")
+    table.add_column("Slash", style="blue")
+    table.add_column("Mask", style="magenta")
+    table.add_column("Wildcard", style="red")
+
     for s in subnets:
-        print("{:<10}{:<15}{:<17}{:<15}{:<18}{:<18}{:<33}{:<7}{:<18}{}".format(
-            s["Name"], s["Hosts Needed"], s["Hosts Available"], s["Unused Hosts"],
-            s["Network Address"], s["Broadcast"], s["Usable Range"], s["Slash"],
-            s["Mask"], s["Wildcard"]
-        ))
+        table.add_row(
+            s["Name"],
+            str(s["Hosts Needed"]),
+            str(s["Hosts Available"]),
+            str(s["Unused Hosts"]),
+            s["Network Address"],
+            s["Broadcast"],
+            s["Usable Range"],
+            s["Slash"],
+            s["Mask"],
+            s["Wildcard"]
+        )
+
+    print(table)
 
 if __name__ == "__main__":
+    print("\n[bold cyan]=== VLSM SUBNET CALCULATOR (type 'exit' to quit) ===[/]")
+
     while True:
         try:
             while True:
                 try:
-                    network_input = input("\nEnter network address (e.g., 192.168.1.0/24 or type 'exit'): ").strip().replace(" ", "")
+                    network_input = input("\nEnter network address (e.g., 192.168.1.0/24): ").strip().replace(" ", "")
                     if network_input.lower() == "exit":
-                        print("Exiting. Goodbye!")
+                        print("[bold red]Exiting. Goodbye![/]")
                         exit()
                     network = IPNetwork(network_input)
                     break
                 except Exception:
-                    print("Invalid network format. Please try again.")
+                    print("[bold red]Invalid network format. Please try again.[/]")
 
             while True:
                 try:
@@ -63,9 +85,9 @@ if __name__ == "__main__":
                     if num_subnets > 0:
                         break
                     else:
-                        print("Number must be greater than 0.")
+                        print("[bold red]Number must be greater than 0.[/]")
                 except ValueError:
-                    print("Please enter a valid number.")
+                    print("[bold red]Please enter a valid number.[/]")
 
             hosts_list = []
             for i in range(num_subnets):
@@ -76,13 +98,13 @@ if __name__ == "__main__":
                             hosts_list.append(host)
                             break
                         else:
-                            print("Number must be greater than 0.")
+                            print("[bold red]Number must be greater than 0.[/]")
                     except ValueError:
-                        print("Please enter a valid number.")
+                        print("[bold red]Please enter a valid number.[/]")
 
             subnets = calculate_vlsm(network, hosts_list)
             print_vlsm_table(subnets)
 
         except KeyboardInterrupt:
-            print("\nExiting. Goodbye!")
+            print("\n[bold red]Exiting. Goodbye![/]")
             break
