@@ -30,7 +30,7 @@ or manually:
 pip install netaddr rich
 ```
 
-## How to Use
+## 🚀 How to Use
 1. 🐍 Make sure you have Python installed (Python 3.6 or higher). Download it from [python.org](https://www.python.org/downloads/).
 2. 📥 Clone the repository
 ```bash
