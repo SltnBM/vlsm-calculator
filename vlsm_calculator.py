@@ -3,6 +3,7 @@ from rich import print
 from rich.table import Table
 import argparse
 import sys
+from openpyxl import Workbook
 
 def calculate_vlsm(network, hosts_required):
     hosts_required.sort(reverse=True)
@@ -66,6 +67,35 @@ def print_vlsm_table(subnets):
     print(table)
     print("\n[bold red]Tip:[/] Having trouble with the table layout? Try resizing your terminal and run it again.\n")
 
+def export_to_excel(subnets, filename="vlsm_result.xlsx"):
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "VLSM Calculation"
+
+    headers = [
+        "Name", "Hosts Needed", "Hosts Available", "Unused Hosts",
+        "Network Address", "Broadcast", "Usable Range",
+        "Slash", "Mask", "Wildcard"
+    ]
+    ws.append(headers)
+
+    for s in subnets:
+        ws.append([
+            s["Name"],
+            s["Hosts Needed"],
+            s["Hosts Available"],
+            s["Unused Hosts"],
+            s["Network Address"],
+            s["Broadcast"],
+            s["Usable Range"],
+            s["Slash"],
+            s["Mask"],
+            s["Wildcard"]
+        ])
+
+    wb.save(filename)
+    print(f"[bold green]✅ Exported to {filename}[/]")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="VLSM Subnet Calculator")
@@ -123,6 +153,17 @@ if __name__ == "__main__":
 
             subnets = calculate_vlsm(network, hosts_list)
             print_vlsm_table(subnets)
+
+            while True:
+                export_choice = input("Do you want to export the result to Excel? (y/n): ").strip().lower()
+                if export_choice == "y":
+                    export_to_excel(subnets, "vlsm_result.xlsx")
+                    break
+                elif export_choice == "n":
+                    print("[bold yellow]Not exported.[/]")
+                    break
+                else:
+                    print("[bold red]Please enter 'y' or 'n'.[/]")
 
         except KeyboardInterrupt:
             print("\n[bold red]Exiting. Goodbye![/]")
