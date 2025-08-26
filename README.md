@@ -13,10 +13,13 @@ Built for educational and practical use in subnet planning.
 - 📌 Supports command-line arguments
 - ♻️ Continuous input mode with validation and graceful exit
 - ⚡ Lightweight, beginner-friendly, and easy to use
+- 📂 Optional export of results to Excel (.xlsx)
 
 ## 📋 Requirements
 1. 🐍 Python 3.6 or higher
-2. 📦 [`netaddr`](https://pypi.org/project/netaddr/), [`rich`](https://pypi.org/project/rich/)
+2. 📦 [`netaddr`](https://pypi.org/project/netaddr/)
+3. 🎨 [`rich`](https://pypi.org/project/rich/)
+4. 📊 [openpyxl](https://pypi.org/project/openpyxl/) (for Excel export)
 
 Install dependencies:
 
@@ -90,6 +93,9 @@ Enter required hosts for subnet 3: 10
 └─────────────┴──────────────────┴──────────────────────┴──────────────────┴──────────────────────┴───────────────────┴──────────────────────────────────────┴─────────┴─────────────────────┴───────────┘
 
 Tip: Having trouble with the table layout? Try resizing your terminal and run it again.
+
+Do you want to export the result to Excel? (y/n): y
+✔ Exported to vlsm_result.xlsx
 ```
 
 ## 🤝 Contributing
