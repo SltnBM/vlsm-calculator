@@ -3,6 +3,7 @@ from rich import print
 from rich.table import Table
 import argparse
 import sys
+import os
 from openpyxl import Workbook
 
 def calculate_vlsm(network, hosts_required):
@@ -68,6 +69,14 @@ def print_vlsm_table(subnets):
     print("\n[bold red]Tip:[/] Having trouble with the table layout? Try resizing your terminal and run it again.\n")
 
 def export_to_excel(subnets, filename="vlsm_result.xlsx"):
+    base, ext = os.path.splitext(filename)
+    counter = 1
+
+    new_filename = filename
+    while os.path.exists(new_filename):
+        new_filename = f"{base}({counter}){ext}"
+        counter += 1
+
     wb = Workbook()
     ws = wb.active
     ws.title = "VLSM Calculation"
@@ -93,9 +102,8 @@ def export_to_excel(subnets, filename="vlsm_result.xlsx"):
             s["Wildcard"]
         ])
 
-    wb.save(filename)
-    print(f"[bold green]✔ Exported to {filename}[/]")
-
+    wb.save(new_filename)
+    print(f"[bold green]✔ Exported to {new_filename}[/]")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="VLSM Subnet Calculator")
