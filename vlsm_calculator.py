@@ -94,7 +94,7 @@ def export_to_excel(subnets, filename="vlsm_result.xlsx"):
         ])
 
     wb.save(filename)
-    print(f"[bold green]✅ Exported to {filename}[/]")
+    print(f"[bold green]✔ Exported to {filename}[/]")
 
 
 if __name__ == "__main__":
