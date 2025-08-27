@@ -19,7 +19,7 @@ Built for educational and practical use in subnet planning.
 1. 🐍 Python 3.6 or higher
 2. 📦 [`netaddr`](https://pypi.org/project/netaddr/)
 3. 🎨 [`rich`](https://pypi.org/project/rich/)
-4. 📊 [openpyxl](https://pypi.org/project/openpyxl/) (for Excel export)
+4. 📊 [`openpyxl`](https://pypi.org/project/openpyxl/)
 
 Install dependencies:
 
@@ -30,7 +30,7 @@ pip install -r requirements.txt
 or manually:
 
 ```bash
-pip install netaddr rich
+pip install netaddr rich openpyxl
 ```
 
 ## 🚀 How to Use
