@@ -6,6 +6,8 @@ Built for educational and practical use in subnet planning.
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Requirements](https://img.shields.io/badge/requirements.txt-up%20to%20date-brightgreen)
 
+---
+
 ## ✨ Features
 - 📏 Calculates optimal subnet divisions based on required host counts
 - 📊 Detailed output including Network Address, Broadcast Address, Subnet Mask, Wildcard Mask, and Usable IP Range
@@ -14,6 +16,8 @@ Built for educational and practical use in subnet planning.
 - ♻️ Continuous input mode with validation and graceful exit
 - ⚡ Lightweight, beginner-friendly, and easy to use
 - 📂 Optional export of results to Excel (.xlsx)
+
+---
 
 ## 📋 Requirements
 1. 🐍 Python 3.6 or higher
@@ -33,6 +37,8 @@ or manually:
 pip install netaddr rich openpyxl
 ```
 
+---
+
 ## 🚀 How to Use
 1. 🐍 Make sure you have Python installed (Python 3.6 or higher). Download it from [python.org](https://www.python.org/downloads/).
 2. 📥 Clone the repository
@@ -49,6 +55,8 @@ cd vlsm-calculator
 ```bash
 python vlsm_calculator.py
 ```
+
+---
 
 ## 💻 Usage
 ### Option 1: With CLI arguments
@@ -98,11 +106,17 @@ Do you want to export the result to Excel? (y/n): y
 ✔ Exported to vlsm_result.xlsx
 ```
 
+---
+
 ## 🤝 Contributing
 Contributions are welcome. Feel free to open issues or submit pull requests for improvements.
 
+---
+
 ## 📬 Connect with Me
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Sultan%20Badra-blue?logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/sultan-badra)
+
+---
 
 ## 📜 License
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
