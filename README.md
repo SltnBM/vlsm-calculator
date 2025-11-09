@@ -9,21 +9,21 @@ Built for educational and practical use in subnet planning.
 ---
 
 ## ✨ Features
-- 📏 Calculates optimal subnet divisions based on required host counts
-- 📊 Detailed output including Network Address, Broadcast Address, Subnet Mask, Wildcard Mask, and Usable IP Range
-- 🧑‍💻 Interactive CLI input for network and host requirements
-- 📌 Supports command-line arguments
-- ♻️ Continuous input mode with validation and graceful exit
-- ⚡ Lightweight, beginner-friendly, and easy to use
-- 📂 Optional export of results to Excel (.xlsx)
+- Calculates optimal subnet divisions based on required host counts
+- Detailed output including Network Address, Broadcast Address, Subnet Mask, Wildcard Mask, and Usable IP Range
+- Interactive CLI input for network and host requirements
+- Supports command-line arguments
+- Continuous input mode with validation and graceful exit
+- Lightweight, beginner-friendly, and easy to use
+- Optional export of results to Excel (.xlsx)
 
 ---
 
 ## 📋 Requirements
-1. 🐍 Python 3.6 or higher
-2. 📦 [`netaddr`](https://pypi.org/project/netaddr/)
-3. 🎨 [`rich`](https://pypi.org/project/rich/)
-4. 📊 [`openpyxl`](https://pypi.org/project/openpyxl/)
+1. Python 3.6 or higher
+2. [`netaddr`](https://pypi.org/project/netaddr/)
+3. [`rich`](https://pypi.org/project/rich/)
+4. [`openpyxl`](https://pypi.org/project/openpyxl/)
 
 Install dependencies:
 
@@ -40,18 +40,18 @@ pip install netaddr rich openpyxl
 ---
 
 ## 🚀 How to Use
-1. 🐍 Make sure you have Python installed (Python 3.6 or higher). Download it from [python.org](https://www.python.org/downloads/).
-2. 📥 Clone the repository
+1. Make sure you have Python installed (Python 3.6 or higher). Download it from [python.org](https://www.python.org/downloads/).
+2. Clone the repository
 ```bash
 git clone https://github.com/SltnBM/vlsm-calculator.git
 ```
 Alternatively, you can Download ZIP if preferred.
 
-3. 📂 Navigate to the project directory
+3. Navigate to the project directory
 ```bash
 cd vlsm-calculator
 ```
-4. ▶️ Run the script
+4. Run the script
 ```bash
 python vlsm_calculator.py
 ```
